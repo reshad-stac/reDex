@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GridLayout xmlns="http://schemas.nativescript.org/tns.xsd" rows="auto,auto,auto" columns="*,*,*,*" class="p-6">
+    <Repeater items="{{ apps }}" colSpan="4">
+        <Repeater.itemsLayout>
+            <GridLayout rows="auto,auto,auto" columns="*,*,*,*" />
+        </Repeater.itemsLayout>
+        <Repeater.itemTemplate>
+            <StackLayout row="{{ row }}" col="{{ col }}" class="p-4 text-center" tap="{{ launch }}">
+                <GridLayout rows="*" columns="*" class="bg-slate-800 rounded-xl p-4 h-24 w-24">
+                    <Image src="{{ icon }}" class="w-12 h-12" />
+                </GridLayout>
+                <Label text="{{ name }}" class="text-sm text-slate-200 mt-2" />
+            </StackLayout>
+        </Repeater.itemTemplate>
+    </Repeater>
+</GridLayout>

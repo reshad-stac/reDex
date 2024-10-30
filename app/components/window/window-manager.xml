@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AbsoluteLayout xmlns="http://schemas.nativescript.org/tns.xsd">
+    <Repeater items="{{ windows }}">
+        <Repeater.itemTemplate>
+            <GridLayout rows="auto,*" columns="*" 
+                class="bg-slate-800 rounded-lg shadow-xl" 
+                left="{{ x }}" top="{{ y }}" width="{{ width }}" height="{{ height }}">
+                <!-- Window Title Bar -->
+                <GridLayout row="0" columns="auto,*,auto" class="bg-slate-900 p-2 rounded-t-lg">
+                    <Label col="0" text="{{ title }}" class="text-white ml-2" />
+                    <StackLayout col="2" orientation="horizontal">
+                        <Label text="—" class="text-white mx-1 p-1" tap="{{ minimize }}" />
+                        <Label text="□" class="text-white mx-1 p-1" tap="{{ maximize }}" />
+                        <Label text="×" class="text-white mx-1 p-1" tap="{{ close }}" />
+                    </StackLayout>
+                </GridLayout>
+                <!-- Window Content -->
+                <ContentView row="1" content="{{ content }}" />
+            </GridLayout>
+        </Repeater.itemTemplate>
+    </Repeater>
+</AbsoluteLayout>

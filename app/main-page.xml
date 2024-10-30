@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-slate-950">
+    <ActionBar title="Re-Dex" class="bg-slate-900 text-white" flat="true" />
+    
+    <GridLayout rows="*" columns="*">
+        <!-- Desktop Mode -->
+        <GridLayout rows="auto,*" columns="*" visibility="{{ isExternalDisplayConnected ? 'visible' : 'collapsed' }}">
+            <!-- Taskbar -->
+            <ContentView row="0" loaded="loadTaskbar"/>
+
+            <!-- Desktop Content -->
+            <GridLayout row="1" rows="*" columns="*">
+                <!-- Desktop Background -->
+                <Image src="~/assets/wallpaper.jpg" stretch="aspectFill" />
+                
+                <!-- App Grid -->
+                <ContentView loaded="loadAppGrid" />
+                
+                <!-- Window Manager -->
+                <ContentView loaded="loadWindowManager" />
+            </GridLayout>
+        </GridLayout>
+
+        <!-- Mobile Mode -->
+        <GridLayout visibility="{{ !isExternalDisplayConnected ? 'visible' : 'collapsed' }}" class="p-6">
+            <StackLayout class="bg-slate-800 rounded-xl p-6">
+                <Image src="~/assets/redex-logo.png" width="120" height="120" class="mb-6" />
+                <Label text="Re-Dex" class="text-3xl font-bold text-white text-center mb-2" />
+                <Label text="Transform your mobile into a desktop workstation" class="text-lg text-slate-300 text-center mb-6" textWrap="true" />
+                <Label text="Connect to an external display to begin" class="text-slate-400 text-center mb-4" textWrap="true" />
+                <Button text="Check Connection" tap="{{ checkDisplayConnection }}" 
+                    class="bg-blue-600 text-white p-4 rounded-lg w-full" />
+                <Label text="{{ connectionStatus }}" class="text-sm text-slate-400 text-center mt-4" textWrap="true" />
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>

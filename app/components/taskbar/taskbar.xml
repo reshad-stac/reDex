@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GridLayout xmlns="http://schemas.nativescript.org/tns.xsd" rows="auto" columns="auto,*,auto" class="bg-slate-900 p-3">
+    <!-- App Menu -->
+    <GridLayout col="0" class="mr-4" rows="auto" columns="auto,auto">
+        <Label text="Re-Dex" class="text-lg font-bold text-white mr-2" />
+        <Image src="~/assets/menu.png" width="20" height="20" col="1" tap="{{ toggleAppMenu }}" />
+    </GridLayout>
+
+    <!-- Running Apps -->
+    <ScrollView col="1" orientation="horizontal">
+        <FlexboxLayout class="justify-start items-center">
+            <GridLayout repeat="activeApps" class="mx-2 p-2" columns="auto,auto" tap="{{ switchApp }}"
+                backgroundColor="{{ isActive ? '#374151' : 'transparent' }}" borderRadius="4">
+                <Image src="{{ icon }}" width="20" height="20" class="mr-2" />
+                <Label col="1" text="{{ name }}" class="text-sm text-white" />
+            </GridLayout>
+        </FlexboxLayout>
+    </ScrollView>
+
+    <!-- System Tray -->
+    <FlexboxLayout col="2" class="justify-end items-center">
+        <Label text="{{ time }}" class="text-white mr-4" />
+        <Image src="~/assets/wifi.png" width="20" height="20" class="mx-2" />
+        <Image src="~/assets/battery.png" width="20" height="20" class="mx-2" />
+    </FlexboxLayout>
+</GridLayout>
